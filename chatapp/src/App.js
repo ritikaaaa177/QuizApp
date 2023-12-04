@@ -1,12 +1,11 @@
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
 import SignUp from "./pages/SignUp";
+import SignIn from "./pages/SignIn";
 import("preline");
 
 function App() {
   return (
     <>
-      <SignUp />
+      <Home />
     </>
   );
 }

@@ -1,17 +1,18 @@
-import Sidebar from "../Components/Sidebar";
+import SideBar from "../Components/Sidebar";
+import Quiz from "../Components/Quiz";
 
 function Home() {
   return (
     <>
-      {/* Building Container for the chat  */}
+      <div className=" flex flex-row mx-auto justify-evenly">
+        <div>
+          <SideBar />
+        </div>
 
-      <body>
-        <main id="content" role="main">
-          <div class="max-w-[100rem] mx-auto min-h-screen py-10 px-4 sm:px-6 lg:px-8  bg-white">
-            <Sidebar />
-          </div>
-        </main>
-      </body>
+        <div>
+          <Quiz />
+        </div>
+      </div>
     </>
   );
 }

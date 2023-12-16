@@ -11,7 +11,7 @@ function Home() {
           <SideBar />
         </div>
 
-        <div className=" w-full flex flex-column">
+        <div className="first w-full bg-blue-950 flex flex-column">
           <div className="flex flex-row">
             <Landing />
             <img

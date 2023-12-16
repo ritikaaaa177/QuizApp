@@ -1,5 +1,6 @@
 import SideBar from "../Components/Sidebar";
-import Quiz from "../Components/Quiz";
+// import Quiz from "../Components/Quiz";
+import Landing from "../Components/Landing";
 
 function Home() {
   return (
@@ -10,7 +11,7 @@ function Home() {
         </div>
 
         <div>
-          <Quiz />
+          <Landing />
         </div>
       </div>
     </>

@@ -5,6 +5,12 @@ module.exports = {
     extend: {
       width: {
         128: "50rem",
+        120: "45rem",
+      },
+      height: {
+        128: "50rem",
+        120: "45rem",
+        98: "28rem",
       },
       fontFamily: {
         custom: ["Poppins", "sans-serif"],

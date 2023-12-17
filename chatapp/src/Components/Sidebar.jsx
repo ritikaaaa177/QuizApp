@@ -1,4 +1,18 @@
+import React from "react";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase";
+import { useNavigate } from "react-router-dom";
+
 function Sidebar() {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    signOut(auth).then(() => {
+      // Sign-out successful.
+      navigate("/");
+      console.log("Signed out successfully");
+    });
+  };
   return (
     <>
       <div
@@ -113,6 +127,13 @@ function Sidebar() {
               </span>
             </button>
           </div>
+
+          <button
+            className="relative top-96 bg-gradient-to-tl from-blue-600 to-violet-600 text-white px-5 py-2 rounded-xl"
+            onClick={handleLogout}
+          >
+            Logout
+          </button>
         </div>
       </div>
     </>

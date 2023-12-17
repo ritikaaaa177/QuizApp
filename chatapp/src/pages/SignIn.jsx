@@ -1,4 +1,23 @@
+import React, { useState } from "react";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase";
+import { NavLink, useNavigate } from "react-router-dom";
+
 function SignIn() {
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const onLogin = (e) => {
+    e.preventDefault();
+    signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
+      // Signed in
+      const user = userCredential.user;
+      navigate("/home");
+      console.log(user);
+    });
+  };
+
   return (
     <>
       <html class="h-full">
@@ -10,7 +29,7 @@ function SignIn() {
                   <h1 class="block text-2xl font-bold text-gray-800 dark:text-white">
                     Sign in
                   </h1>
-                  <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                  {/* <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
                     Don't have an account yet?
                     <a
                       class="text-blue-600 decoration-2 hover:underline font-medium dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
@@ -18,7 +37,7 @@ function SignIn() {
                     >
                       Sign up here
                     </a>
-                  </p>
+                  </p> */}
                 </div>
 
                 <div class="mt-5">
@@ -74,6 +93,7 @@ function SignIn() {
                             class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
                             required
                             aria-describedby="email-error"
+                            onChange={(e) => setEmail(e.target.value)}
                           />
                           <div class="hidden absolute inset-y-0 end-0 flex items-center pointer-events-none pe-3">
                             <svg
@@ -120,6 +140,7 @@ function SignIn() {
                             class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600"
                             required
                             aria-describedby="password-error"
+                            onChange={(e) => setPassword(e.target.value)}
                           />
                           <div class="hidden absolute inset-y-0 end-0 flex items-center pointer-events-none pe-3">
                             <svg
@@ -163,12 +184,21 @@ function SignIn() {
 
                       <button
                         type="submit"
-                        class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                        class="w-full bg-gradient-to-tl from-blue-600 to-violet-600 text-white py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent  disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                        onClick={onLogin}
                       >
                         Sign in
                       </button>
                     </div>
                   </form>
+                  <p className="text-sm text-white text-center">
+                    No account yet?{" "}
+                    <NavLink to="/signup">
+                      <span className="font-bold  bg-clip-text bg-gradient-to-tl from-blue-600 to-violet-600 text-transparent">
+                        Sign up
+                      </span>
+                    </NavLink>
+                  </p>
                 </div>
               </div>
             </div>

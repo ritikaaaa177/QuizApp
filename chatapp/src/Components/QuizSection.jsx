@@ -1,3 +1,15 @@
+// function QuizSection() {
+//   return (
+//     <>
+//       {/* <div className=" w-80 h-80 border-2 border-yellow-500">
+//         hi my name is Ritika
+//       </div> */}
+//     </>
+//   );
+// }
+
+// export default QuizSection;
+
 function QuizSection() {
   return (
     <>

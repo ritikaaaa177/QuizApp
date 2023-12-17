@@ -1,18 +1,20 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 
 function SignUp() {
   const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const onSubmit = async (e) => {
+  const onSubmitFunc = async (e) => {
     e.preventDefault();
 
     await createUserWithEmailAndPassword(auth, email, password).then(
       (userCredential) => {
+        // Signed in
         const user = userCredential.user;
         console.log(user);
         navigate("/login");
@@ -68,9 +70,7 @@ function SignUp() {
                             required
                             aria-describedby="email-error"
                             value={email}
-                            onChange={(e) => {
-                              setEmail(e.target.email);
-                            }}
+                            onChange={(e) => setEmail(e.target.value)}
                           />
                           <div class="hidden absolute inset-y-0 end-0 flex items-center pointer-events-none pe-3">
                             <svg
@@ -112,9 +112,7 @@ function SignUp() {
                             required
                             aria-describedby="password-error"
                             value={password}
-                            onChange={(e) => {
-                              setPassword(e.target.password);
-                            }}
+                            onChange={(e) => setPassword(e.target.value)}
                           />
                           <div class="hidden absolute inset-y-0 end-0 flex items-center pointer-events-none pe-3">
                             <svg
@@ -158,13 +156,21 @@ function SignUp() {
 
                       <button
                         type="submit"
-                        class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                        onClick={onSubmit}
+                        class="bg-gradient-to-tl from-blue-600 to-violet-600 text-white w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                        onClick={onSubmitFunc}
                       >
                         Sign Up
                       </button>
                     </div>
                   </form>
+                  <p className="3 text-sm text-white text-center">
+                    Already have an account?
+                    <NavLink to="/login">
+                      <span className=" font-bold  bg-clip-text bg-gradient-to-tl from-blue-600 to-violet-600 text-transparent">
+                        Sign in
+                      </span>
+                    </NavLink>
+                  </p>
                 </div>
               </div>
             </div>

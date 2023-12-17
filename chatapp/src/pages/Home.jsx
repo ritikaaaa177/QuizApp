@@ -7,9 +7,9 @@ function Home() {
   return (
     <div>
       <div className=" flex flex-row mx-auto justify-evenly">
-        <div>
+        {/* <div>
           <SideBar />
-        </div>
+        </div> */}
 
         <div className="first w-full h-98 bg-blue-950 flex flex-column">
           <div className=" h-96 relative bottom-6 ">

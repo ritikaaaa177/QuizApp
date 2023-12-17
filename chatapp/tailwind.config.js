@@ -10,6 +10,7 @@ module.exports = {
       height: {
         128: "50rem",
         120: "45rem",
+        100: "30rem",
         98: "28rem",
       },
       fontFamily: {
